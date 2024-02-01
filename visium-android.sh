@@ -5,8 +5,7 @@ set -x
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
-    sh 'echo "{ "foo": 123, "bar": 456 }" | /usr/local/bin/jq ".foo"'
-
+    
     # Install jq using Homebrew
     brew install jq
 
@@ -19,6 +18,7 @@ if ! command -v jq &> /dev/null; then
 else
     echo "jq is already installed."
 fi
+
 
 
 echo "step 1 --> DONE <--" 
