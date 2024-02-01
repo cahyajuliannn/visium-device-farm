@@ -12,7 +12,7 @@ if ! command -v jq &> /dev/null; then
     chmod +x jq
 
     # Move jq to a directory in your PATH
-    sudo -S mv jq /usr/local/bin/ <<< "0107"
+    mv jq /usr/local/bin/
 
     # Check installation success
     if command -v jq &> /dev/null; then
