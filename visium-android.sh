@@ -3,14 +3,14 @@ set -x
 
 # step 1: check and install jq
 # Check if jq is installed
-if [ ! -x "/opt/homebrew/bin/jq" ]; then
+if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
 
     # Install jq using Homebrew
     /opt/homebrew/bin/brew install jq
 
     # Check installation success
-    if [ -x "/opt/homebrew/bin/jq" ]; then
+    if command -v jq &> /dev/null; then
         echo "jq has been successfully installed."
     else
         echo "Failed to install jq. Please install it manually."
@@ -35,7 +35,7 @@ response=$(curl -s -X GET https://farmdemo.visiumlabs.com/api/devices?os=Android
 -H "X-VisiumFarm-Api-Key: 2q3Ue23QgD.Xj0TMbjEpzr2Zf6PfngagnetePGiOjubCr6aUwN0")
 
 # Extract the 'id' attributes from the JSON response and format output with double quotes
-ids=$(echo "$response" | /opt/homebrew/bin/jq -r '[.[] | .deviceId] | map("\"" + . + "\"") | join(",")')
+ids=$(echo "$response" | /jq -r '[.[] | .deviceId] | map("\"" + . + "\"") | join(",")')
 
 
 # Output the extracted 'id' attributes in the required format
