@@ -6,9 +6,14 @@ set -x
 if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
     
-    # Update package lists and install jq
-    apt-get update
-    apt-get install -y jq
+    # Check if Homebrew is installed
+    if ! command -v brew &> /dev/null; then
+        echo "Homebrew is not installed. Please install Homebrew first."
+        exit 1
+    fi
+
+    # Install jq using Homebrew
+    brew install jq
 
     # Check installation success
     if command -v jq &> /dev/null; then
@@ -19,6 +24,7 @@ if ! command -v jq &> /dev/null; then
 else
     echo "jq is already installed."
 fi
+
 
 echo "step 1 --> DONE <--" 
 
