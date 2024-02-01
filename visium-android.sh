@@ -8,10 +8,22 @@ if ! command -v jq &> /dev/null; then
     
     # Check if Homebrew is installed
     if ! command -v brew &> /dev/null; then
-        echo "Homebrew is not installed. Please install Homebrew first."
-        exit 1
-    fi
+        echo "Homebrew is not installed. Installing Homebrew..."
+        
+        # Install Homebrew
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+        # Check installation success
+        if command -v brew &> /dev/null; then
+            echo "Homebrew has been successfully installed."
+        else
+            echo "Failed to install Homebrew. Please install it manually."
+            exit 1
+        fi
+    else
+        echo "Homebrew is already installed."
+    fi
+    
     # Install jq using Homebrew
     brew install jq
 
