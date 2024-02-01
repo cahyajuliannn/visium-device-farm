@@ -7,7 +7,7 @@ if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
 
     # Install jq using Homebrew
-    jq install jq
+    brew install jq
 
     # Check installation success
     if command -v jq &> /dev/null; then
