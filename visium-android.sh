@@ -11,7 +11,7 @@ if ! command -v jq &> /dev/null; then
     apt-get install -y jq
 
     # Check installation success
-    if command -v jq; then
+    if command -v jq &> /dev/null; then
         echo "jq has been successfully installed."
     else
         echo "Failed to install jq. Please install it manually."
@@ -19,6 +19,7 @@ if ! command -v jq &> /dev/null; then
 else
     echo "jq is already installed."
 fi
+
 echo "step 1 --> DONE <--" 
 
 # step 2: get all devide id of Android
