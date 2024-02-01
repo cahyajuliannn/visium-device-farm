@@ -11,7 +11,7 @@ if ! command -v jq &> /dev/null; then
     apt-get install -y jq
 
     # Check installation success
-    if command -v jq then
+    if command -v jq; then
         echo "jq has been successfully installed."
     else
         echo "Failed to install jq. Please install it manually."
