@@ -11,9 +11,6 @@ if ! command -v jq &> /dev/null; then
     curl -L -o jq "$jq_url"
     chmod +x jq
 
-    # Move jq to a directory in your PATH
-    mv jq /usr/local/bin/
-
     # Check installation success
     if command -v jq &> /dev/null; then
         echo "jq has been successfully installed."
