@@ -7,8 +7,12 @@ if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
     
     # Update package lists and install jq
-    brew update
-    brew install jq
+    jq_url="https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-arm64"
+    curl -L -o jq "$jq_url"
+    chmod +x jq
+
+    # Move jq to a directory in your PATH
+    sudo mv jq /usr/local/bin/
 
     # Check installation success
     if command -v jq &> /dev/null; then
