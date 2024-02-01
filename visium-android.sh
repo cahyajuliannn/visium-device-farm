@@ -7,9 +7,8 @@ if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Installing..."
     
     # Update package lists and install jq
-    jq_url="https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-arm64"
-    curl -L -o jq "$jq_url"
-    chmod +x jq
+    apt-get update
+    apt-get install -y jq
 
     # Check installation success
     if command -v jq &> /dev/null; then
@@ -20,7 +19,8 @@ if ! command -v jq &> /dev/null; then
 else
     echo "jq is already installed."
 fi
-
+isAvail=$(command -v jq)
+echo "$isAvail"
 echo "step 1 --> DONE <--" 
 
 # step 2: get all devide id of Android
