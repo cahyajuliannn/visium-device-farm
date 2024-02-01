@@ -20,6 +20,7 @@ else
     echo "jq is already installed."
 fi
 
+echo "step 1 --> DONE <--" 
 
 # step 2: get all devide id of Android
 # Make the GET request and capture the JSON response
@@ -36,6 +37,7 @@ echo "$ids"
 
 export ids=$ids
 
+echo "step 2 --> DONE <--" 
 
 # step 3: upload APK file and get the id of APK file
 # Set the necessary variables
@@ -58,6 +60,8 @@ echo "The extracted appId is: $appId"
 
 export appId=$appId
 
+echo "step 3 --> DONE <--" 
+
 # step 4: Install the APK in all Android devices
 curl -X POST https://farmdemo.visiumlabs.com/api/apk/install \
 -H "Content-Type: application/json" \
@@ -73,3 +77,5 @@ curl -X POST https://farmdemo.visiumlabs.com/api/apk/install \
     '"$ids"'
   ]
 }'
+
+echo "step 4 --> DONE <--" 
