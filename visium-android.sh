@@ -3,24 +3,26 @@ set -x
 
 # step 1: check and install jq
 # Check if jq is installed
-if (!file("/opt/homebrew/bin/jq").exists()) {
+if [ ! -x "/opt/homebrew/bin/jq" ]; then
     echo "jq is not installed. Installing..."
 
-    #Install jq using Homebrew
-    sh '/opt/homebrew/bin/brew install jq'
+    # Install jq using Homebrew
+    /opt/homebrew/bin/brew install jq
 
-    #Check installation success
-    if (file("/opt/homebrew/bin/jq").exists()) {
+    # Check installation success
+    if [ -x "/opt/homebrew/bin/jq" ]; then
         echo "jq has been successfully installed."
-    } else {
+    else
         echo "Failed to install jq. Please install it manually."
-    }
-} else {
+        exit 1
+    fi
+else
     echo "jq is already installed."
-}
+fi
 
-// Use jq
-sh '/opt/homebrew/bin/jq --version'
+# Use jq
+/opt/homebrew/bin/jq --version
+
 
 
 
