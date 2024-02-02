@@ -46,7 +46,7 @@ echo "step 2 --> DONE <--"
 # step 3: upload APK file and get the id of APK file
 # Set the necessary variables
 API_KEY="2q3Ue23QgD.Xj0TMbjEpzr2Zf6PfngagnetePGiOjubCr6aUwN0"
-FILE_PATH="Register_2.0_Apkpure.apk"
+FILE_PATH="${WORKSPACE}/visium/Register_2.0_Apkpure.apk"
 API_URL="https://farmdemo.visiumlabs.com/api/v1/apps"
 
 # Make the POST request and capture the response
