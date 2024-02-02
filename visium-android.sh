@@ -21,9 +21,7 @@ else
 fi
 
 # Use jq
-/opt/homebrew/bin/jq --version
-
-
+jq --version
 
 
 echo "step 1 --> DONE <--" 
